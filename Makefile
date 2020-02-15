@@ -18,5 +18,5 @@ xor.o: xor.c xor.h Matrix.c Matrix.h
 Matrix.o: Matrix.c Matrix.h
 	gcc -c Matrix.c
 
-clean: 
+clean:
 	$(RM) main *.o

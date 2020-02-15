@@ -1,0 +1,37 @@
+                      /$$   /$$  /$$$$$$  /$$$$$$$
+                     | $$  / $$ /$$__  $$| $$__  $$
+                     |  $$/ $$/| $$  \ $$| $$  \ $$
+                      \  $$$$/ | $$  | $$| $$$$$$$/
+                       >$$  $$ | $$  | $$| $$__  $$
+                      /$$/\  $$| $$  | $$| $$  \ $$
+                     |$$  \ $$|  $$$$$$/| $$  | $$
+                     |__/  |__/ \______/ |__/  |__/
+
+
+                              BY SOYCENT
+
+
+README
+
+    This is a XOR neural network developed by the SOYCENT team during the OCR
+    development in order to understand the basics of neural networking. This
+    C language program creates and trains a XOR neural network. Inputs can be
+    directly changed in the source code.
+
+USAGE
+
+      ./main
+        Generates the neural network, prints its results before and after the
+        training for every possible inputs, and the output of a single pair of
+        inputs considered as the 'user inputs'. It also shows the cost function
+        and the average error of the network after its training.
+
+COMPILING
+
+  Download the XOR source code, then use the following:
+
+      make
+
+CURRENT STATUS
+
+    The development of this XOR neural network is over.
