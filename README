@@ -28,7 +28,7 @@ USAGE
 
 COMPILING
 
-  Download the XOR source code, then use the following:
+    Download the XOR source code, then use the following:
 
       make
 
