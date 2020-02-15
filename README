@@ -22,7 +22,7 @@ USAGE
 
       ./main
         Generates the neural network, prints its results before and after the
-        training for every possible inputs, and the output of a single pair of
+        training for every possible inputs, and the output for a single pair of
         inputs considered as the 'user inputs'. It also shows the cost function
         and the average error of the network after its training.
 
