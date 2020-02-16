@@ -1,22 +1,22 @@
 # ----- XOR.C
 
-#Define the default target
+CC = gcc
+CFLAGS =
+CPPFLAGS =
+LDFLAGS = -lm
+
+# libraries
+LM = -lm
+
+SRC = Matrix.c xor.c
 
 all: main
+main: $(SRC)
+	$(CC) -o $@ main.c \
+		$(SRC) \
+		$(CFLAGS) $(CPPFLAGS) $(LDFLAGS)
 
-#Define dependencies and compile information
-
-main: main.o xor.o Matrix.o
-	gcc -Wall -Wextra -std=c99 main.o Matrix.o xor.o -o main -lm
-
-main.o: xor.c xor.h Matrix.c Matrix.h
-	gcc -c main.c
-
-xor.o: xor.c xor.h Matrix.c Matrix.h
-	gcc -c xor.c
-
-Matrix.o: Matrix.c Matrix.h
-	gcc -c Matrix.c
+.PHONY: clean
 
 clean:
-	$(RM) main *.o
+	$(RM) main

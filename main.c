@@ -2,6 +2,7 @@
 #include <stdio.h>
 #include <time.h>
 #include <math.h>
+
 #include "Matrix.h"
 #include "xor.h"
 
@@ -13,7 +14,7 @@ int main()
 	printf("Inputs:\n"); //inputs
 	Matrix **inputs = generate_xor_inputs();
 	print_matrices(inputs, 4);
-	
+
 	printf("Desired outputs:\n"); //desired outputs
 	Matrix **desired_outputs = generate_xor_desired_outputs();
 	print_matrices(desired_outputs, 4);
@@ -30,12 +31,12 @@ int main()
 	print_matrices(neurons_z, nb_layers);
 
 	//generate weights
-	Matrix **weights = generate_weights(layers, nb_layers); 
+	Matrix **weights = generate_weights(layers, nb_layers);
 	printf("Generated weights:\n");
 	print_matrices(weights, nb_layers-1);
 
 	//generate biases
-	Matrix **biases = generate_biases(layers, nb_layers); 
+	Matrix **biases = generate_biases(layers, nb_layers);
 	printf("Generated biases:\n");
 	print_matrices(biases, nb_layers-1);
 
@@ -45,10 +46,10 @@ int main()
 	{
 		neurons_z[0] = inputs[t];
 		neurons_a[0] = inputs[t];
-		feed_forward(neurons_z, neurons_a, 
+		feed_forward(neurons_z, neurons_a,
 			weights, biases, nb_layers);
-		printf("%d xor %d = %f\n", (int)inputs[t]->list[0], 
-			(int)inputs[t]->list[1], 
+		printf("%d xor %d = %f\n", (int)inputs[t]->list[0],
+			(int)inputs[t]->list[1],
 			neurons_a[nb_layers-1]->list[0]);
 	}
 	// printf("Weights:\n");
@@ -72,17 +73,17 @@ int main()
 	for (size_t epoch=0; epoch < nb_epochs; epoch++)
 	{
 		which_input = epoch % 4;
-		train(deltaW, deltaB, inputs, 
-		weights, neurons_z,neurons_a, 
-		biases, nb_layers, desired_outputs, 
+		train(deltaW, deltaB, inputs,
+		weights, neurons_z,neurons_a,
+		biases, nb_layers, desired_outputs,
 		cost_fun, which_input);
 
 		//updates neural network
-		weights = sub_listofmatrices(weights, 
-			mult_listofmatrices(eta, deltaW, nb_layers-1), 
+		weights = sub_listofmatrices(weights,
+			mult_listofmatrices(eta, deltaW, nb_layers-1),
 			nb_layers-1);
-		biases = sub_listofmatrices(biases, 
-			mult_listofmatrices(eta, deltaB, nb_layers-1), 
+		biases = sub_listofmatrices(biases,
+			mult_listofmatrices(eta, deltaB, nb_layers-1),
 			nb_layers-1);
 
 		//average error
@@ -93,7 +94,7 @@ int main()
 		// print_matrices(deltaB, nb_layers-1);
 		// printf("\ndeltaW:\n-\n");
 		// print_matrices(deltaW, nb_layers-1);
-		// feed_forward(neurons_z, neurons_a, 
+		// feed_forward(neurons_z, neurons_a,
 		// 	weights, biases, nb_layers);
 		// printf("Weights\n");
 		// print_matrices(weights, nb_layers-1);
@@ -119,10 +120,10 @@ int main()
 	{
 		neurons_z[0] = inputs[t];
 		neurons_a[0] = inputs[t];
-		feed_forward(neurons_z, neurons_a, 
+		feed_forward(neurons_z, neurons_a,
 			weights, biases, nb_layers);
-		printf("%d xor %d = %f\n", (int)inputs[t]->list[0], 
-			(int)inputs[t]->list[1], 
+		printf("%d xor %d = %f\n", (int)inputs[t]->list[0],
+			(int)inputs[t]->list[1],
 			neurons_a[nb_layers-1]->list[0]);
 	}
 	// printf("\ndeltaB:\n-\n");
@@ -148,11 +149,11 @@ int main()
 	neurons_z[0]->list[1] = y;
 	neurons_a[0]->list[0] = x;
 	neurons_a[0]->list[1] = y;
-	feed_forward(neurons_z, neurons_a, 
+	feed_forward(neurons_z, neurons_a,
 		weights, biases, nb_layers);
 	printf("-\nWith user inputs: ");
-	printf("%d xor %d = %f\n", (int)neurons_a[0]->list[0], 
-		(int)neurons_a[0]->list[1], 
+	printf("%d xor %d = %f\n", (int)neurons_a[0]->list[0],
+		(int)neurons_a[0]->list[1],
 		neurons_a[nb_layers-1]->list[0]);
 
 	//free time
